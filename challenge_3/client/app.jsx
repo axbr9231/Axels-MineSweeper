@@ -6,9 +6,12 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            hello: true
+            score: 0,
+            bowl1: 0,
+            bowl2: 0
         };
     }
+
     render() {
         return (
             <div>
@@ -17,6 +20,9 @@ class App extends React.Component {
                 </div>
                 <h5></h5>
                 <PinBoard />
+                <div>
+                    <p>Score: </p>
+                </div>
             </div>
         )
     }
