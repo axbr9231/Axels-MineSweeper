@@ -1,5 +1,6 @@
 import React from 'react';
 import PinBoard from './PinBoard.jsx';
+import ScoreBoard from './ScoreBoard.jsx';
 
 
 class App extends React.Component {
