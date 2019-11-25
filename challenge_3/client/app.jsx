@@ -20,9 +20,6 @@ class App extends React.Component {
                 </div>
                 <h5></h5>
                 <PinBoard />
-                <div>
-                    <p>Score: </p>
-                </div>
             </div>
         )
     }

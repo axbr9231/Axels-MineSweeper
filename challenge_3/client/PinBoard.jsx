@@ -8,6 +8,7 @@ class PinBoard extends React.Component {
             bowl1: 0,
             bowl2: 0,
             score: 0,
+            frameScore: 0,
             firstClick: true,
             secondClick: false
         }
@@ -19,17 +20,19 @@ class PinBoard extends React.Component {
                 bowl1: value,
                 firstClick: false,
                 secondClick: true,
-                score: value
-            });
+                frameScore: value
+            }, () => {console.log(this.state)});
         } else if (this.state.secondClick === true) {
             this.setState({
                 bowl2: value,
                 firstClick: true,
-                secondClick: false
+                secondClick: false,
+                frameScore: this.state.bowl1 + value
             }, () => {
                 this.setState({
-                    score: this.state.bowl1 + this.state.bowl2
-                });
+                    frameScore: 0,
+                    score: this.state.score + this.state.bowl1 + this.state.bowl2
+                })
             })
         }
         
@@ -64,6 +67,7 @@ class PinBoard extends React.Component {
                 {this.renderSquare('#')}
             </div>
             <div>
+                <h5>Current Frame: {this.state.frameScore}</h5>
                 <h4>Score: {this.state.score}</h4>
             </div>
             </div>
@@ -72,3 +76,14 @@ class PinBoard extends React.Component {
 }
 
 export default PinBoard;
+
+// () => {
+    //     this.setState({
+    //         frameScore: this.state.bowl1 + this.state.bowl2
+    //     }, () => {
+    //         this.setState({
+    //             score: this.state.score + this.state.frameScore,
+    //             frameScore: 0
+    //         })
+    //     });
+    // })
