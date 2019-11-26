@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Board from './Board.js';
+import Header from './Header.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,7 +16,10 @@ class App extends React.Component {
     return (
       <div>
         <div>Hello World</div>
-        <Board />
+        <div class="container">
+        <Header className="header-component"/>
+        <Board style={{border: '2px solid black'}}/>
+      </div>
       </div>
     )
   }
