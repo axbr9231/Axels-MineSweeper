@@ -25,15 +25,15 @@ class Board extends React.Component {
 
     render() {
         return (
-            <div>"
+            <div id="board" class="ml-5">
                 <div class="row">
                 {this.dimension.map((r, i) => {
                     let col = this.dimension.map((c, i) => {
-                        return (<Square />)
+                        return (<Square key={i}/>)
                     })
                     return (
                     <div>
-                    <Square />
+                    <Square key={i}/>
                     {col}
                     </div>
                         )
@@ -44,12 +44,6 @@ class Board extends React.Component {
     }
 }
 
-const style = {
-    // display: 'grid',
-    border: '2px solid black', 
-    // 'grid-template-columns': '100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px', 
-    width: '1100px',
-    height: '90px'
-}
+
 
 export default Board;
