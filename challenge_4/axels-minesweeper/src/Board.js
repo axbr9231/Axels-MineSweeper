@@ -74,6 +74,9 @@ class Board extends React.Component {
                     square.count = mineCount;
                     this.setState({ rows: rows }, () => {console.log(square)});
                 }
+                if (!square.hasMine && mineCount === 0) {
+                    this.unveilSurroundingSquares(square);
+                }
             }
         })
          
@@ -93,6 +96,22 @@ class Board extends React.Component {
             }
         } 
         return minesCloseBy;
+    }
+
+    unveilSurroundingSquares(square) {
+        let rows = this.state.rows
+
+        for (let row = -1; row <= 1; row++) {
+            for (let col = -1; col <= 1; col++) {
+                if (square.y + row >= 0 && square.x + col >= 0) {
+                    if (square.y + row < this.state.rows.length && square.x + col < this.state.rows[0].length) {
+                        if (!this.state.rows[square.y + row][square.x + col].hasMine && !rows[square.y + row][square.x + col].isShown) {
+                            this.unveilSquare(rows[square.y + row][square.x + col])
+                        }
+                    }
+                }
+            }
+        }
     }
 
     
