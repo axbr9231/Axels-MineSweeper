@@ -13,20 +13,21 @@ class Square extends React.Component {
 
             
         }
-        this.showSquare = this.showSquare.bind(this);
+       
     }
-    showSquare() {
-        // this.props.unveilSquare(this.state)
-        //     this.setState({
-        //         isShown: true
-        //     })
-    }
+   
 
     renderSquare() {
-        if (this.props.data.isShown) {
+        if (this.props.data.isShown && this.props.data.count !== 0) {
             return (
                 <div className="shown-square" onClick={() => {this.props.unveilSquare(this.props.data)}}>
                     {this.props.data.count}
+                </div>
+            ) 
+        } else if (this.props.data.isShown) {
+            return (
+                <div className="shown-square" onClick={() => {this.props.unveilSquare(this.props.data)}}>
+                    <img src={require('./15051971031557740350-24.png')}></img>
                 </div>
             ) 
         } else {
