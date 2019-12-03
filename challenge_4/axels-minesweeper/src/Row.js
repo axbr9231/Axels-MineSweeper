@@ -11,6 +11,7 @@ let row = props.squares.map((data, i) => {
         className="square" 
         unveilSquare={props.unveilSquare}
         plantFlag={props.plantFlag}
+        removeFlag={props.removeFlag}
         />
     )
 })

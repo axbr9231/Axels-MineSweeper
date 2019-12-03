@@ -49,7 +49,7 @@ class Board extends React.Component {
         }
         return board;
     }
-    async unveilSquare(square) {
+    unveilSquare(square) {
 
         let countMines = new Promise(resolve => {
             let mines = this.checkSuroundingSquares(square);
@@ -64,6 +64,7 @@ class Board extends React.Component {
     
             if (currentSquare.hasMine && this.props.openSquares === 0) {
                 let newRows = this.renderBoard(this.props);
+                this.props.resetGame();
                 this.setState({
                     rows: newRows
                 }, () => {
@@ -125,6 +126,24 @@ class Board extends React.Component {
                 rows: rows
             }, () => {this.props.updateFlags()});
         }
+        
+        if (this.state.flags === 0) {
+            alert('Good Job! You won!');
+        }
+    }
+
+    removeFlag(square) {
+        let rows = this.state.rows
+    
+        if(square.hasFlag && !square.isShown) {
+            square.hasFlag = false;
+            this.setState({
+                flags: this.state.flags + 1,
+                rows: rows
+            }, () => {
+                this.props.removeFlag();
+            })
+        }
     }
 
     
@@ -132,7 +151,13 @@ class Board extends React.Component {
     render() {
         let game = this.state.rows.map((row, i) => {
             return (
-                <Row squares={row} class="row" unveilSquare={this.unveilSquare} plantFlag={this.plantFlag}/>
+                <Row 
+                squares={row} 
+                class="row" 
+                unveilSquare={this.unveilSquare} 
+                plantFlag={this.plantFlag}
+                removeFlag={this.removeFlag.bind(this)}
+                />
             )
         })
         

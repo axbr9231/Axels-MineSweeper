@@ -15,6 +15,8 @@ class App extends React.Component {
       }
     }
     this.handleFlag = this.handleFlag.bind(this);
+    this.resetGame = this.resetGame.bind(this);
+    this.removeFlag = this.removeFlag.bind(this);
   }
 
   handleFlag() {
@@ -23,10 +25,24 @@ class App extends React.Component {
     })
   }
 
+  resetGame () {
+    this.setState({
+      flags: 10
+    }, () => {
+      alert('Oops, you hit a mine... game over...')
+    })
+  }
+
+  removeFlag(square) {
+    this.setState({
+      flags: this.state.flags + 1
+    });
+  }
+
   render() {
     return (
       <div>
-        <div>Hello World</div>
+        <div class="ml-5">Axel's MineSweeper</div>
         <div class="container">
         <Header className="header-component" flags={this.state.flags}/>
         <Board style={{border: '2px solid black'}} 
@@ -36,6 +52,8 @@ class App extends React.Component {
         openSquares={this.state.openSquares}
         flags={this.state.flags}
         updateFlags={this.handleFlag}
+        resetGame={this.resetGame}
+        removeFlag={this.removeFlag}
         />
       </div>
       </div>
