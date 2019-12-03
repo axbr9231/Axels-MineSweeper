@@ -13,26 +13,37 @@ class Square extends React.Component {
 
             
         }
-       
+       this.handleKeyPress = this.handleKeyPress.bind(this);
+    }
+    
+
+    handleKeyPress(e) {
+        e.preventDefault();
+        this.props.plantFlag(this.props.data);
+        
+        
     }
    
 
     renderSquare() {
         if (this.props.data.isShown && this.props.data.count !== 0) {
             return (
-                <div className="shown-square" onClick={() => {this.props.unveilSquare(this.props.data)}}>
+                <div className="shown-square" 
+                onClick={() => {this.props.unveilSquare(this.props.data)}}
+                onContextMenu={(e) => {this.handleKeyPress(e)}}
+                >
                     {this.props.data.count}
                 </div>
             ) 
         } else if (this.props.data.isShown) {
             return (
-                <div className="shown-square" onClick={() => {this.props.unveilSquare(this.props.data)}}>
+                <div className="shown-square" onClick={() => {this.props.unveilSquare(this.props.data)}} onContextMenu={(e) => {this.handleKeyPress(e)}}>
                     <img src={require('./15051971031557740350-24.png')}></img>
                 </div>
             ) 
         } else {
             return (
-                <div className="square" onClick={() => {this.props.unveilSquare(this.props.data)}}>
+                <div className="square" onClick={() => {this.props.unveilSquare(this.props.data)}} onContextMenu={(e) => {this.handleKeyPress(e)}}>
 
                 </div>
             )

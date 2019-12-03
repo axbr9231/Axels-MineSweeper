@@ -14,6 +14,7 @@ class Board extends React.Component {
         this.renderBoard = this.renderBoard.bind(this);
         this.unveilSquare = this.unveilSquare.bind(this);
         this.checkSuroundingSquares = this.checkSuroundingSquares.bind(this);
+        this.plantFlag = this.plantFlag.bind(this);
     }
 
     renderBoard() {
@@ -114,12 +115,24 @@ class Board extends React.Component {
         }
     }
 
+    plantFlag(square) {
+        let rows = this.state.rows
+
+        if (!square.hasFlag && !square.isShown) {
+            square.hasFlag = true;
+            this.setState({
+                flags: this.state.flags - 1,
+                rows: rows
+            }, () => {console.log(square)});
+        }
+    }
+
     
 
     render() {
         let game = this.state.rows.map((row, i) => {
             return (
-                <Row squares={row} class="row" unveilSquare={this.unveilSquare}/>
+                <Row squares={row} class="row" unveilSquare={this.unveilSquare} plantFlag={this.plantFlag}/>
             )
         })
         
