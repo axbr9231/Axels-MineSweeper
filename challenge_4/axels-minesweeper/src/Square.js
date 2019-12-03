@@ -38,9 +38,15 @@ class Square extends React.Component {
         } else if (this.props.data.isShown) {
             return (
                 <div className="shown-square" onClick={() => {this.props.unveilSquare(this.props.data)}} onContextMenu={(e) => {this.handleKeyPress(e)}}>
-                    <img src={require('./15051971031557740350-24.png')}></img>
+                    
                 </div>
             ) 
+        } else if (!this.props.data.isShown && this.props.data.hasFlag) {
+            return (
+                <div className="shown-square" onClick={() => {this.props.unveilSquare(this.props.data)}}>
+                    <img src={require('./15051971031557740350-24.png')}></img>
+                </div>
+            )
         } else {
             return (
                 <div className="square" onClick={() => {this.props.unveilSquare(this.props.data)}} onContextMenu={(e) => {this.handleKeyPress(e)}}>
