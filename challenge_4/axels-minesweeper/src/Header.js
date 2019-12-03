@@ -13,7 +13,7 @@ class Header extends React.Component {
         return (
             
             <div class="row" id="header">
-                <div id="bombs-left" class="col-md-4 justify-content-start">10</div>
+                <div id="bombs-left" class="col-md-4 justify-content-start">{this.props.flags}</div>
                 <div class="col-md-6 justify-content-center">
                     <button>start</button>
                 </div>

@@ -123,7 +123,7 @@ class Board extends React.Component {
             this.setState({
                 flags: this.state.flags - 1,
                 rows: rows
-            }, () => {console.log(square)});
+            }, () => {this.props.updateFlags()});
         }
     }
 
