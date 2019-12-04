@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Board from './Board.js';
 import Header from './Header.js';
+import Timer from './Timer.js';
 
 class App extends React.Component {
   constructor(props) {
