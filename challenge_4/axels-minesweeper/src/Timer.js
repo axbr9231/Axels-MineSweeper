@@ -17,19 +17,13 @@ class Timer extends React.Component {
         if (this.state.minutes < 10 && this.state.seconds < 10) {
             return (
                 <div>
-                    <p>0.{this.state.minutes}:0.{this.state.seconds}</p>
+                    <p>Time: {this.state.minutes} : {this.state.seconds}</p>
                 </div>
-            )
-        } else if (this.state.minutes < 10) {
-            return (
-            <div>
-                <p>0.{this.state.minutes}:{this.state.seconds}</p>
-            </div>
             )
         } else {
             return (
                 <div>
-                    <p>{this.state.minutes}:{this.state.seconds}</p>
+                    <p>Time: {this.state.minutes} : {this.state.seconds}</p>
                 </div>
             )
         }

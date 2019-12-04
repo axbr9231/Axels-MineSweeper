@@ -15,10 +15,10 @@ class Header extends React.Component {
         return (
             
             <div class="row" id="header">
-                <div id="bombs-left"  >{this.props.flags}</div>
+                <div id="bombs-left"  >Flags: {this.props.flags}</div>
                     <button >start</button>
                 <div>
-                <Timer class="justify-content-end"/>
+                <Timer />
                 </div>
             </div>
             

@@ -54,13 +54,25 @@
 
 #timer {
   font-weight: bold;
-  padding-left: 290px;
+  position: relative;
+  margin-top: 10px;
+  width: 100px;
+  
 
 }
 
 button {
   position: fixed;
   margin-top: 10px;
+  
+}
+
+#bombs-left {
+  position: relative;
+  padding-right: 200px;
+  margin-top: 10px;
+  font-weight: bold;
+  
 }
 
 
