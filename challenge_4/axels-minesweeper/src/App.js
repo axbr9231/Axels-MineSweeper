@@ -54,7 +54,12 @@ class App extends React.Component {
       <div>
         <div class="ml-5">Axel's MineSweeper</div>
         <div class="container">
-        <Header className="header-component" flags={this.state.flags} startGame={this.startGame}/>
+        <Header 
+        className="header-component" 
+        flags={this.state.flags} 
+        startGame={this.startGame}
+        status={this.state.status}
+        />
         <Board style={{border: '2px solid black'}} 
         rows={this.state.height} 
         columns={this.state.width} 

@@ -30,16 +30,20 @@ class Timer extends React.Component {
     }
 
     tick() {
-        this.setState({
-            seconds: this.state.seconds + 1
-        })
+        if (this.props.status === 'running') {
+            this.setState({
+                seconds: this.state.seconds + 1
+            })
+        }
     }
 
     clock() {
-        this.setState({
-            minutes: this.state.minutes + 1,
-            seconds: 0
-        })
+        if (this.props.status === 'running') {
+            this.setState({
+                minutes: this.state.minutes + 1,
+                seconds: 0
+            })
+        }
     }
 
     render() {

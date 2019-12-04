@@ -5,10 +5,6 @@ import Timer from './Timer.js';
 class Header extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            minutes: 0,
-            seconds: 0
-        }
     }
 
     render() {
@@ -16,9 +12,9 @@ class Header extends React.Component {
             
             <div class="row" id="header">
                 <div id="bombs-left"  >Flags: {this.props.flags}</div>
-                    <button >start</button>
+                    <button onClick={() => {this.props.startGame()}}>start</button>
                 <div>
-                <Timer />
+                <Timer status={this.props.status}/>
                 </div>
             </div>
             
