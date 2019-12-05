@@ -20,6 +20,12 @@ class Timer extends React.Component {
                     <p>Time: {this.state.minutes} : {this.state.seconds}</p>
                 </div>
             )
+        } else if (this.props.status === 'off') {
+            return (
+                <div>
+                    <p>Time: 0 : 0</p>
+                </div>
+            )
         } else {
             return (
                 <div>
@@ -34,7 +40,7 @@ class Timer extends React.Component {
             this.setState({
                 seconds: this.state.seconds + 1
             })
-        }
+        } 
     }
 
     clock() {
@@ -43,7 +49,7 @@ class Timer extends React.Component {
                 minutes: this.state.minutes + 1,
                 seconds: 0
             })
-        }
+        } 
     }
 
     render() {
@@ -54,12 +60,22 @@ class Timer extends React.Component {
         } else {
             setTimeout(this.tick, 1000)
         }
-
-        return (
-            <div id="timer">
-                {timer}
-            </div>
-        )
+        
+        if (this.props.status === 'running') {
+            return (
+                <div id="timer">
+                    {timer}
+                </div>
+            )
+        } else {
+            return (
+                <div id="timer">
+                    <div>
+                        <p>Time: 0 : 0</p>
+                    </div>
+                </div>
+            )
+        }
     }
 }
 

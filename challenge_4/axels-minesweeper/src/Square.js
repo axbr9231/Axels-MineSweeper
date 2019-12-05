@@ -3,16 +3,6 @@ import React from 'react';
 class Square extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-                // x: this.props.data.x,
-                // y: this.props.data.y,
-                // hasMine: this.props.data.hasMine,
-                // hasFlag: this.props.data.hasFlag,
-                // isShown: this.props.data.isShown,
-                // count: this.props.data.count
-
-            
-        }
        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
     

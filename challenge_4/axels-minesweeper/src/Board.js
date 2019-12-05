@@ -49,38 +49,42 @@ class Board extends React.Component {
         }
         return board;
     }
+
     unveilSquare(square) {
-
-        let countMines = new Promise(resolve => {
-            let mines = this.checkSuroundingSquares(square);
-            resolve(mines);
-        })        
-
-        countMines.then(mineCount => {
-            
-            let rows = this.state.rows;
+        if (this.props.status === 'running') {
+            let countMines = new Promise(resolve => {
+                let mines = this.checkSuroundingSquares(square);
+                resolve(mines);
+            })        
     
-            let currentSquare = rows[square.y][square.x];
-    
-            if (currentSquare.hasMine && this.props.openSquares === 0) {
-                let newRows = this.renderBoard(this.props);
-                this.props.resetGame();
-                this.setState({
-                    rows: newRows
-                }, () => {
-                    this.unveilSquare(square)
-                })
-            } else {
-                if (!square.hasFlag && !currentSquare.isShown) {
-                    square.isShown = true;
-                    square.count = mineCount;
-                    this.setState({ rows: rows }, () => {console.log(square)});
+            countMines.then(mineCount => {
+                
+                let rows = this.state.rows;
+        
+                let currentSquare = rows[square.y][square.x];
+        
+                if (currentSquare.hasMine && this.props.openSquares === 0) {
+                    let newRows = this.renderBoard(this.props);
+                    this.props.resetGame();
+                    this.setState({
+                        rows: newRows
+                    }, () => {
+                        this.unveilSquare(square)
+                    })
+                } else {
+                    if (!square.hasFlag && !currentSquare.isShown) {
+                        square.isShown = true;
+                        square.count = mineCount;
+                        this.setState({ rows: rows }, () => {console.log(square)});
+                    }
+                    if (!square.hasMine && mineCount === 0) {
+                        this.unveilSurroundingSquares(square);
+                    }
                 }
-                if (!square.hasMine && mineCount === 0) {
-                    this.unveilSurroundingSquares(square);
-                }
-            }
-        })
+            })
+
+        }
+
          
     }
 
@@ -173,20 +177,3 @@ class Board extends React.Component {
 
 export default Board;
 
-// return (
-//     <div id="board" class="ml-5">
-//         <div class="row">
-//         {this.dimension.map((r, i) => {
-//             let col = this.dimension.map((c, i) => {
-//                 return (<Square key={i}/>)
-//             })
-//             return (
-//             <div>
-//             <Square key={i}/>
-//             {col}
-//             </div>
-//                 )
-//         })}
-//         </div>
-//     </div>
-// )

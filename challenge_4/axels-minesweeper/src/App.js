@@ -68,6 +68,7 @@ class App extends React.Component {
         flags={this.state.flags}
         updateFlags={this.handleFlag}
         resetGame={this.resetGame}
+        status={this.state.status}
         removeFlag={this.removeFlag}
         />
       </div>
