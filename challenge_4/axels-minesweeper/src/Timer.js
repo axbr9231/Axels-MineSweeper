@@ -12,6 +12,7 @@ class Timer extends React.Component {
         this.timer = this.timer.bind(this);
         this.clock = this.clock.bind(this);
     }
+    
 
     timer() {
         if (this.state.minutes < 10 && this.state.seconds < 10) {
