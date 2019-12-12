@@ -11,7 +11,10 @@ class Timer extends React.Component {
         this.tick = this.tick.bind(this);
         this.timer = this.timer.bind(this);
         this.clock = this.clock.bind(this);
+        this.baseState = this.state;
+        this.reset = this.reset.bind(this);
     }
+
     
 
     timer() {
@@ -22,6 +25,7 @@ class Timer extends React.Component {
                 </div>
             )
         } else if (this.props.status === 'off') {
+            this.reset();
             return (
                 <div>
                     <p>Time: 0 : 0</p>
@@ -53,6 +57,12 @@ class Timer extends React.Component {
         } 
     }
 
+    reset() {
+        if (this.props.status === 'off') {
+            this.setState(this.baseState)
+        }
+    }
+
     render() {
         let timer = this.timer();
 
@@ -68,7 +78,8 @@ class Timer extends React.Component {
                     {timer}
                 </div>
             )
-        } else {
+        } else if (this.props.status === 'off'){
+            
             return (
                 <div id="timer">
                     <div>
